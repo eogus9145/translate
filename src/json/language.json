@@ -1,0 +1,672 @@
+[  
+  {
+    "ko": "한국어",
+    "code": "ko",
+    "native": "한국어"
+  },
+  {
+    "ko": "영어",
+    "code": "en",
+    "native": "english"
+  },
+  {
+    "ko": "갈리시아어",
+    "code": "gl",
+    "native": "galego"
+  },
+  {
+    "ko": "과라니어",
+    "code": "gn",
+    "native": "guarani"
+  },
+  {
+    "ko": "구자라트어",
+    "code": "gu",
+    "native": "ગુજરાતી"
+  },
+  {
+    "ko": "그리스어",
+    "code": "el",
+    "native": "ελληνικά"
+  },
+  {
+    "ko": "네덜란드어",
+    "code": "nl",
+    "native": "Nederlands"
+  },
+  {
+    "ko": "네팔어",
+    "code": "ne",
+    "native": "नेपाली"
+  },
+  {
+    "ko": "노르웨이어",
+    "code": "no",
+    "native": "norsk"
+  },
+  {
+    "ko": "니안자어(치츄어)",
+    "code": "ny",
+    "native": "Nianja(Chichu)"
+  },
+  {
+    "ko": "덴마크어",
+    "code": "da",
+    "native": "dansk"
+  },
+  {
+    "ko": "도그리어",
+    "code": "doi",
+    "native": "डोगरी"
+  },
+  {
+    "ko": "독일어",
+    "code": "de",
+    "native": "Deutsch"
+  },
+  {
+    "ko": "디베히어",
+    "code": "dv",
+    "native": "ދިވެހި"
+  },
+  {
+    "ko": "라오어",
+    "code": "lo",
+    "native": "ພາສາລາວ"
+  },
+  {
+    "ko": "라트비아어",
+    "code": "lv",
+    "native": "latviski"
+  },
+  {
+    "ko": "라틴어",
+    "code": "la",
+    "native": "latin"
+  },
+  {
+    "ko": "러시아어",
+    "code": "ru",
+    "native": "русский"
+  },
+  {
+    "ko": "루간다어",
+    "code": "lg",
+    "native": "Oluganda"
+  },
+  {
+    "ko": "루마니아어",
+    "code": "ro",
+    "native": "română"
+  },
+  {
+    "ko": "룩셈부르크어",
+    "code": "lb",
+    "native": "lëtzebuergesch"
+  },
+  {
+    "ko": "리투아니아어",
+    "code": "lt",
+    "native": "lietuvių"
+  },
+  {
+    "ko": "링갈라어",
+    "code": "ln",
+    "native": "Lingala"
+  },
+  {
+    "ko": "마라티어",
+    "code": "mr",
+    "native": "मराठी"
+  },
+  {
+    "ko": "마오리어",
+    "code": "mi",
+    "native": "Maori"
+  },
+  {
+    "ko": "마이틸리어",
+    "code": "mai",
+    "native": "मैटिली"
+  },
+  {
+    "ko": "마케도니아어",
+    "code": "mk",
+    "native": "македонски"
+  },
+  {
+    "ko": "말라가시어",
+    "code": "mg",
+    "native": "Malagasy"
+  },
+  {
+    "ko": "말라얄람어",
+    "code": "ml",
+    "native": "മലയാളം"
+  },
+  {
+    "ko": "말레이어",
+    "code": "ms",
+    "native": "melayu"
+  },
+  {
+    "ko": "메이테이어(마니푸르어)",
+    "code": "mni-Mtei",
+    "native": "ꯃꯦꯏꯇꯦꯏ (ꯃꯅꯤꯄꯨꯔ)"
+  },
+  {
+    "ko": "몰타어",
+    "code": "mt",
+    "native": "malti"
+  },
+  {
+    "ko": "몽골어",
+    "code": "mn",
+    "native": "Монгол"
+  },
+  {
+    "ko": "몽어",
+    "code": "hmn",
+    "native": "Hmoob Ntses"
+  },
+  {
+    "ko": "미얀마어(버마어)",
+    "code": "my",
+    "native": "မြန်မာ (ဗမာ)၊"
+  },
+  {
+    "ko": "미조어",
+    "code": "lus",
+    "native": "Mizo tawng"
+  },
+  {
+    "ko": "바스크어",
+    "code": "eu",
+    "native": "euskalduna"
+  },
+  {
+    "ko": "밤바라어",
+    "code": "bm",
+    "native": "Bamanankan"
+  },
+  {
+    "ko": "베트남어",
+    "code": "vi",
+    "native": "Tiếng Việt"
+  },
+  {
+    "ko": "벨라루스어",
+    "code": "be",
+    "native": "беларускі"
+  },
+  {
+    "ko": "벵골어",
+    "code": "bn",
+    "native": "বাংলা"
+  },
+  {
+    "ko": "보스니아어",
+    "code": "bs",
+    "native": "bosanski"
+  },
+  {
+    "ko": "보지푸리어",
+    "code": "bho",
+    "native": "भोजपुरी"
+  },
+  {
+    "ko": "북소토어",
+    "code": "nso",
+    "native": "Sesotho sa Leboa"
+  },
+  {
+    "ko": "불가리아어",
+    "code": "bg",
+    "native": "български"
+  },
+  {
+    "ko": "사모아어",
+    "code": "sm",
+    "native": "Samoa"
+  },
+  {
+    "ko": "산스크리트어",
+    "code": "sa",
+    "native": "संस्कृत"
+  },
+  {
+    "ko": "세르비아어",
+    "code": "sr",
+    "native": "српски"
+  },
+  {
+    "ko": "세부아노어",
+    "code": "ceb",
+    "native": "Cebuano"
+  },
+  {
+    "ko": "세소토어",
+    "code": "st",
+    "native": "Sesotho"
+  },
+  {
+    "ko": "소말리어",
+    "code": "so",
+    "native": "Soomaali"
+  },
+  {
+    "ko": "쇼나어",
+    "code": "sn",
+    "native": "Shona"
+  },
+  {
+    "ko": "순다어",
+    "code": "su",
+    "native": "Basa Sunda"
+  },
+  {
+    "ko": "스리랑카어(싱할라어)",
+    "code": "si",
+    "native": "ශ්‍රී ලාංකික (සිංහල)"
+  },
+  {
+    "ko": "스와힐리어",
+    "code": "sw",
+    "native": "kiswahili"
+  },
+  {
+    "ko": "스웨덴어",
+    "code": "sv",
+    "native": "svenska"
+  },
+  {
+    "ko": "스코틀랜드 게일어",
+    "code": "gd",
+    "native": "Gàidhlig na h-Alba"
+  },
+  {
+    "ko": "스페인어",
+    "code": "es",
+    "native": "español"
+  },
+  {
+    "ko": "슬로바키아어",
+    "code": "sk",
+    "native": "slovenský"
+  },
+  {
+    "ko": "슬로베니아어",
+    "code": "sl",
+    "native": "slovenski"
+  },
+  {
+    "ko": "신디어",
+    "code": "sd",
+    "native": "سنڌي"
+  },
+  {
+    "ko": "아랍어",
+    "code": "ar",
+    "native": "عربي"
+  },
+  {
+    "ko": "아르메니아어",
+    "code": "hy",
+    "native": "հայկ"
+  },
+  {
+    "ko": "아삼어",
+    "code": "as",
+    "native": "অসমীয়া"
+  },
+  {
+    "ko": "아이마라어",
+    "code": "ay",
+    "native": "Aymara"
+  },
+  {
+    "ko": "아이슬란드어",
+    "code": "is",
+    "native": "íslenskur"
+  },
+  {
+    "ko": "아이티 크리올어",
+    "code": "ht",
+    "native": "Kreyòl ayisyen"
+  },
+  {
+    "ko": "아일랜드",
+    "code": "ga",
+    "native": "Éire"
+  },
+  {
+    "ko": "아제르바이잔어",
+    "code": "az",
+    "native": "Azərbaycan"
+  },
+  {
+    "ko": "아프리칸스어",
+    "code": "af",
+    "native": "Afrikaans"
+  },
+  {
+    "ko": "알바니아어",
+    "code": "sq",
+    "native": "shqiptare"
+  },
+  {
+    "ko": "암하라어",
+    "code": "am",
+    "native": "አማርኛ"
+  },
+  {
+    "ko": "에스토니아어",
+    "code": "et",
+    "native": "eesti keel"
+  },
+  {
+    "ko": "에스페란토",
+    "code": "eo",
+    "native": "Esperanto"
+  },
+  {
+    "ko": "에웨어",
+    "code": "ee",
+    "native": "Eʋegbe"
+  },
+  {
+    "ko": "오로모어",
+    "code": "om",
+    "native": "Afaan Oromoo"
+  },
+  {
+    "ko": "오리야어",
+    "code": "or",
+    "native": "ଓଡିଆ"
+  },
+  {
+    "ko": "요루바어",
+    "code": "yo",
+    "native": "Yoruba"
+  },
+  {
+    "ko": "우르두어",
+    "code": "ur",
+    "native": "اردو"
+  },
+  {
+    "ko": "우즈베크",
+    "code": "uz",
+    "native": "o'zbek"
+  },
+  {
+    "ko": "우크라이나어",
+    "code": "uk",
+    "native": "українська"
+  },
+  {
+    "ko": "웨일즈어",
+    "code": "cy",
+    "native": "Cymraeg"
+  },
+  {
+    "ko": "위구르어",
+    "code": "ug",
+    "native": "ئۇيغۇر"
+  },
+  {
+    "ko": "이디시어",
+    "code": "yi",
+    "native": "יידיש"
+  },
+  {
+    "ko": "이보어",
+    "code": "ig",
+    "native": "Asụsụ Igbo"
+  },
+  {
+    "ko": "이탈리아어",
+    "code": "it",
+    "native": "italiano"
+  },
+  {
+    "ko": "인도네시아어",
+    "code": "id",
+    "native": "Indonesia"
+  },
+  {
+    "ko": "일로카노어",
+    "code": "ilo",
+    "native": "Ilocano"
+  },
+  {
+    "ko": "일본어",
+    "code": "ja",
+    "native": "日本語"
+  },
+  {
+    "ko": "자바어",
+    "code": "jv",
+    "native": "basa jawa"
+  },
+  {
+    "ko": "조지아어",
+    "code": "ka",
+    "native": "ქართული"
+  },
+  {
+    "ko": "줄루어",
+    "code": "zu",
+    "native": "Zulu"
+  },
+  {
+    "ko": "중국어(간체)",
+    "code": "zh-CN",
+    "native": "中文(简体)"
+  },
+  {
+    "ko": "중국어(번체)",
+    "code": "zh-TW(BCP-47)",
+    "native": "中文(繁体)"
+  },
+  {
+    "ko": "체코어",
+    "code": "cs",
+    "native": "čeština"
+  },
+  {
+    "ko": "총가어",
+    "code": "ts",
+    "native": "Tsonga"
+  },
+  {
+    "ko": "카자흐어",
+    "code": "kk",
+    "native": "қазақ"
+  },
+  {
+    "ko": "카탈루냐어",
+    "code": "ca",
+    "native": "català"
+  },
+  {
+    "ko": "칸나다어",
+    "code": "kn",
+    "native": "ಕನ್ನಡ"
+  },
+  {
+    "ko": "케추아어",
+    "code": "qu",
+    "native": "Runasimi"
+  },
+  {
+    "ko": "코르시카어",
+    "code": "co",
+    "native": "Corsu"
+  },
+  {
+    "ko": "코사어",
+    "code": "xh",
+    "native": "isiXhosa"
+  },
+  {
+    "ko": "콘칸어",
+    "code": "gom",
+    "native": "कोंकणी"
+  },
+  {
+    "ko": "쿠르드어",
+    "code": "ku",
+    "native": "Kurdî"
+  },
+  {
+    "ko": "쿠르드어(소라니어)",
+    "code": "ckb",
+    "native": "کوردی (سۆرانی)"
+  },
+  {
+    "ko": "크로아티아어",
+    "code": "hr",
+    "native": "hrvatski"
+  },
+  {
+    "ko": "크리오어",
+    "code": "kri",
+    "native": "Krio we dɛn kɔl Creore"
+  },
+  {
+    "ko": "크메르어",
+    "code": "km",
+    "native": "ខ្មែរ"
+  },
+  {
+    "ko": "키냐르완다어",
+    "code": "rw",
+    "native": "Kinyarwanda"
+  },
+  {
+    "ko": "키르기스어",
+    "code": "ky",
+    "native": "Кыргызча"
+  },
+  {
+    "ko": "타갈로그어(필리핀어)",
+    "code": "tl",
+    "native": "Tagalog (Filipino)"
+  },
+  {
+    "ko": "타밀어",
+    "code": "ta",
+    "native": "தமிழ்"
+  },
+  {
+    "ko": "타지크어",
+    "code": "tg",
+    "native": "тоҷикӣ"
+  },
+  {
+    "ko": "타타르어",
+    "code": "tt",
+    "native": "Татар"
+  },
+  {
+    "ko": "태국어",
+    "code": "th",
+    "native": "แบบไทย"
+  },
+  {
+    "ko": "텔루구어",
+    "code": "te",
+    "native": "తెలుగు"
+  },
+  {
+    "ko": "투르크멘어",
+    "code": "tk",
+    "native": "Türkmenler"
+  },
+  {
+    "ko": "튀르키예어",
+    "code": "tr",
+    "native": "Türk dili"
+  },
+  {
+    "ko": "트위어(아칸어)",
+    "code": "ak",
+    "native": "Twi(Akan)"
+  },
+  {
+    "ko": "티그리냐어",
+    "code": "ti",
+    "native": "ትግሪኛ"
+  },
+  {
+    "ko": "파슈토어",
+    "code": "ps",
+    "native": "پښتو"
+  },
+  {
+    "ko": "펀자브어",
+    "code": "pa",
+    "native": "ਪੰਜਾਬੀ"
+  },
+  {
+    "ko": "페르시아어",
+    "code": "fa",
+    "native": "فارسی"
+  },
+  {
+    "ko": "포르투갈어(포르투갈, 브라질)",
+    "code": "pt",
+    "native": "Português (Portugal, Brasil)"
+  },
+  {
+    "ko": "폴란드어",
+    "code": "pl",
+    "native": "polski"
+  },
+  {
+    "ko": "프랑스어",
+    "code": "fr",
+    "native": "Français"
+  },
+  {
+    "ko": "프리지아어",
+    "code": "fy",
+    "native": "Frysk"
+  },
+  {
+    "ko": "핀란드어",
+    "code": "fi",
+    "native": "suomalainen"
+  },
+  {
+    "ko": "필리핀어(타갈로그어)",
+    "code": "fil",
+    "native": "Filipino (Tagalog)"
+  },
+  {
+    "ko": "하와이어",
+    "code": "haw",
+    "native": "ʻŌlelo Hawaiʻi"
+  },
+  {
+    "ko": "하우사어",
+    "code": "ha",
+    "native": "Hausa"
+  },
+  {
+    "ko": "헝가리어",
+    "code": "hu",
+    "native": "magyar"
+  },
+  {
+    "ko": "히브리어",
+    "code": "he",
+    "native": "עִברִית"
+  },
+  {
+    "ko": "힌디어",
+    "code": "hi",
+    "native": "हिन्दी"
+  }
+]

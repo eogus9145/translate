@@ -1,0 +1,50 @@
+#mainTab {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.mainTabItem {
+    width: 140px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.75rem;
+    cursor: pointer;
+}
+.mainTabItem.active {
+    border-bottom: 2px solid var(--bg-light);
+}
+.mainTabItemName {
+    font-size: 80%;
+    opacity : 0.5;
+}
+.mainTabCloseBtn {
+    cursor: pointer;
+}
+.mainTabCloseIcon {
+    height: 12px;
+    filter: invert(1);
+    opacity: 0.5;
+}
+.mainTabItem.active .mainTabItemName,
+.mainTabItem:hover .mainTabItemName,
+.mainTabItem:hover .mainTabCloseIcon, 
+.mainTabItem.active .mainTabCloseIcon {
+    opacity: 1;
+}
+
+.mainContent {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#main {
+    height: 100%;
+    flex: 1;
+    background-color: var(--bg-main);
+    overflow: hidden;
+}

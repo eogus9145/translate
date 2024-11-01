@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
-function App() {
+import './css/app.css';
+import './css/common.css';
+
+import Titlebar from './components/Titlebar.js';
+import Content from './components/Content.js';
+import { StateProvider } from './StateContext.js';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="container">
+      <StateProvider>
+        <Titlebar/>
+        <Content/>
+      </StateProvider>
     </div>
   );
 }

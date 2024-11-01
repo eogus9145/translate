@@ -1,0 +1,139 @@
+#htmlMain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 0.6rem;
+    overflow: hidden;
+    position: relative;
+}
+#htmlContainer {
+    flex: 1;
+    height: 100%;
+    color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    overflow: hidden;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#htmlTitle {
+    background-color: var(--bg-li-item);
+    color: #fff;
+    width: 100%;
+    padding: 0.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+#htmlContent {
+    width: 100%;
+    flex-grow: 1;
+    padding: 1rem;
+    overflow: auto;
+    font-size: 0.8rem;
+    position: relative;
+}
+
+
+
+pre {
+    line-height: 2;
+}
+
+.htmlTextNode {
+    font-weight: 500;
+    color: var(--bg-li-item);
+    border: 1px solid var(--bg-li-item);
+    background-color: #fff;
+    padding: 0.1rem 0.4rem 0.2rem;
+    border-radius: 4px;
+    margin: 0.2rem;
+}
+
+.htmlTextNode.active {
+    background-color: var(--bg-li-item);
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+#textNodes {
+    width: 20%;
+    height: 100%;
+    overflow: hidden;
+    color: #fff;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+#textNodesTitle {
+    width: 100%;
+    background-color: var(--bg-li-item);
+    padding: 0.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+#textNodesList {
+    width: 100%;
+    flex-grow: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255);
+}
+
+#selectTextNextBtn {
+    width: 100%;
+    padding: 2rem 0;
+    background-color: var(--bg-li-item);
+    color: #fff;
+    font-weight: 500;
+}
+
+.textNodesItem {
+    width: 100%;
+    background-color: #fff;
+    padding: 0.6rem;
+    color: var(--bg-li-item);
+    cursor: pointer;
+    border-bottom: 1px dotted #dfdfdf;
+}
+
+.textNodesItem:hover {
+    background-color: #efefef;
+}
+
+.textNodesIndex {
+    color: #fff;
+    background-color: var(--bg-li-item);
+    padding: 0rem 0.3rem 0.1rem;
+    text-align: center;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    margin-right: 0.25rem;
+}
+
+.textNodesStr {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+#noSelectText {
+    width: 100%;
+    height: 100%;
+    color: var(--bg-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

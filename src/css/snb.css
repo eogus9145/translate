@@ -1,0 +1,139 @@
+#snb {
+    width: 20%;
+    height: 100%;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-dark);
+}
+
+#snbTitle {
+    width: 100%;
+    height: 30px;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dotted var(--bg-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#snbTitleText {
+    font-weight: 500;
+    font-size: 90%;
+}
+#snbContent {
+    width: 100%;
+    height: calc(100% - 30px);
+    overflow: auto;
+}
+#snbSubmenu {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+/* project */
+#projectAddBtn {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#projectAddDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#projectAddNameInput {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: calc(100% - 48px);
+}
+#projectAddButton {
+    color: #fff;
+    width: 48px;
+    padding: 0.4rem;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: var(--bg-li-item);
+    cursor: pointer;
+}
+.projectList {
+    padding: 0.5rem;
+    font-size: 80%;;
+}
+#projectSort {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#projectAdd {
+    padding: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--bg-light);
+}
+#projectSort > span, #projectAdd > span {
+    font-size: 80%;
+    color: rgba(255,255,255,0.5);
+}
+.sortBtn{
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 2px;
+    font-size: 60%;
+    padding: 0.25rem;
+    cursor: pointer;
+    opacity: 0.5;
+}
+.sortBtn:hover, .sortBtn.active {
+    opacity: 1;
+}
+.sortBtn + .sortBtn {
+    margin-left: 0.25rem;
+}
+.projectItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+.projectItem + .projectItem {
+    margin-top: 0.5rem;
+}
+.projectItem > .viewBtn {
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-li-item);
+    color: var(--text-li-item);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 90%;
+    opacity: 0.7;
+}
+.projectItem > .viewBtn.active, .projectItem > .viewBtn:hover {
+    opacity: 1;
+}
+.projectItem > .delBtn {
+    width: 24px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.projectItem > .delBtn:hover > img {
+    filter: brightness(1000%);
+}
+
+.viewBtnName {
+    width: 100%;
+    font-size: 1rem;
+    text-align: start;
+}
+.viewBtnRegDate, .viewBtnModDate {
+    width: 100%;
+    font-size: 80%;
+    text-align: start;
+}

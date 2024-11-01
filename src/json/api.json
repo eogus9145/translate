@@ -1,0 +1,20 @@
+[
+  {
+    "idx": 0,
+    "name": "구글 무료 번역",
+    "desc": "",
+    "apiKey": "none"
+  },
+  {
+    "idx": 1,
+    "name": "Translation AI - Google Cloud",
+    "desc": "유료 : 기본료만 내면 매월 50만자는 무료제공",
+    "apiKey": "123"
+  },
+  {
+    "idx": 2,
+    "name": "Deepl",
+    "desc": "프리티어 한달 50만자 무료",
+    "apiKey": "5678qqq"
+  }
+]

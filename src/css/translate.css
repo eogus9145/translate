@@ -1,0 +1,97 @@
+#translateMain {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+#translateMain > div {
+    width: 100%;
+    height: 100%;
+    color: var(--bg-dark);
+    display: flex;
+    position: relative;
+}
+#translateContentLeft, #translateContentRight {
+    width: calc(50% - 4px);
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+#translateContentSpace {
+    background-color: var(--bg-main);
+    width: 8px;
+    height: 100%;
+}
+#translateMain img {
+    position: absolute;
+    background-color: var(--bg-li-item);
+    padding: 0.5rem;
+    border-radius: 4px;
+    top: calc(50% + 100px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.selectLang {
+    width: 100%;
+    font-size: 80%;
+}
+.selectLangText {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.selectLangText > input {
+    background-color: #efefef;
+    padding: 0.5rem;
+}
+.selectLangText > span {
+    color: var(--bg-li-item);
+    font-weight: 600;
+}
+.selectLangList {
+    width: 100%;
+    height: 170px;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+}
+.selectLangListContainer {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 0.25rem;
+    padding: 0.25rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+}
+.selectLangItem {
+    padding: 0.5rem;
+    background-color: #fafafa;
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.selectLangItem.active {
+    background-color: var(--bg-li-item);
+    color: #fff;
+    font-weight: 600;
+}
+
+#translateMain textarea, .transResult {
+    width: 100%;
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+    padding: 1rem;
+    padding-right: 2rem;
+    font-size: 1rem;
+    background: transparent;
+}
