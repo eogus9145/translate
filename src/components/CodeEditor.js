@@ -33,7 +33,6 @@ const CodeEditor = ({ item }) => {
                 text : text
             }
         }
-        console.log(obj);
     }
 
     return(
