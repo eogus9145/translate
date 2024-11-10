@@ -3,6 +3,8 @@ import { StateProvider, useStateValue } from '../StateContext.js';
 
 import '../css/codeEditor.css';
 
+import saveSvg from '../svg/content/save.svg';
+
 const CodeEditor = ({ item }) => {
 
     const { state, dispatch } = useStateValue();
@@ -38,9 +40,28 @@ const CodeEditor = ({ item }) => {
     return(
         <div id="codeEditor" className='editor'>
             <div className='menu'>
-                <div className='inputGroup'>
-                    <input type="text" placeholder='저장하실 작업명을 입력하세요' value={workName} onChange={(e) => setWorkName(e.target.value) }  />
-                    <button className='searchBtn' onClick={() => saveCode()}>작업 저장</button>
+                <div className='tabMenu'>
+                    <div className='editorTab'>
+                        <button className='editorTabItem active'>코드편집</button>
+                        <button className='editorTabItem'>번역결과</button>
+                    </div>
+                    <div className='optionMenu'>
+                        <button className='optionItem'>코드 불러오기</button>
+                    </div>
+                </div>
+                <div className='subMenu'>
+                        <button>
+                            저장
+                        </button>
+                        <button>
+                            번역대상
+                        </button>
+                        <button>
+                            API설정
+                        </button>
+                        <button>
+                            언어설정
+                        </button>
                 </div>
             </div>
             <div className='textWrapper'>
@@ -49,6 +70,7 @@ const CodeEditor = ({ item }) => {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }

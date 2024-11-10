@@ -63,16 +63,6 @@ const Html = () => {
         openNewTab('code', content);
     }
 
-    const openFile = () => {
-        let content = {}
-        openNewTab('html', content);
-    }
-
-    const openUrl = () => {
-        let content = {}
-        openNewTab('url', content);
-    }
-
     const openNewTab = async (type, content) => {
         let str = type == 'code' ? "코드" : (type == 'html' ? 'HTML파일' : (type == 'url' ? 'URL' : (type == 'start' ? 'start' : '')));
         let arr = [...state.openList];
@@ -86,7 +76,15 @@ const Html = () => {
             idx : idx,
             type : type,
             name : type == 'start' ? '시작' : `새 작업(${str})`,
-            content : content
+            content : content,
+            isSave : false,
+            transTarget : [],
+            api : 0,
+            lang : {
+              from : "",
+              to : []
+            },
+            result : "",
         }
         arr.push(openItem);
         dispatch({type:'setOpenList', payload:arr});
@@ -118,13 +116,8 @@ const Html = () => {
                     </button> */}
                 </div>
                 <div className="openDiv new">
-                    <div className='title'>
-                        새 작업 열기
-                    </div>
                     <div className='openBtnDiv'>
-                        <button className='openBtn' onClick={() => openCode()}>HTML코드 입력</button>
-                        <button className='openBtn' onClick={() => openFile()}>HTML파일 열기</button>
-                        <button className='openBtn' onClick={() => openUrl()}>URL 열기</button>
+                        <button className='openBtn' onClick={() => openCode()}>새 작업 열기</button>
                     </div>
                 </div>
                 <div className='openDiv save'>
