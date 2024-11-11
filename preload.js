@@ -23,6 +23,8 @@ contextBridge.exposeInMainWorld('electron', {
     openHtml: () => ipcRenderer.invoke('openHtml'),
     openUrl: (url) => ipcRenderer.invoke('openUrl', url),
 
+    targetFind: (html) => ipcRenderer.invoke('targetFind', html),
+
     //개발 단계에서만...
     toggleDevTools: () => ipcRenderer.send('toggle-dev-tools'),
 });

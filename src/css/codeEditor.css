@@ -1,71 +1,101 @@
-.editor {
+#codeEditorMain {
     width: 100%;
+    height: 100%;
+    display: flex;
+}
+.editor, .snb {
     height: 100%;
     padding: 0.6rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    position: relative;
 }
 
-.editor > .menu {
+.editor {
+    flex-grow: 1;
+}
+
+.snb {
+    width: 30%;
+}
+
+.editor > .menu, .snb > .snbMenu {
     display: flex;
     align-items: end;
     justify-content: space-between;
     height: 40px;
 }
 
-.editor > .menu > button + button {
-    margin-left: 0.4rem;
-}
-
-.textWrapper {
+.textWrapper, .snbWrapper {
     width: 100%;
     flex-grow: 1;
-    background-color: rgba(255,255,255,1);
+    display: flex;
+}
+
+.snbWrapper {
+    overflow: hidden;
+}
+
+.codeEditorText, .snbContent {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: #4b4b4b;
     padding: 0.6rem;
-    padding-right: 0;
-    padding-bottom: 0;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255,255,255,1);
     border-radius: 0 4px 4px 4px;
     border: 1px solid #fff;
     overflow: hidden;
 }
-
-#codeEditorText {
-    width: 100%;
-    height: 100%;
-    overflow: scroll;
+.snbContent {
+    border-radius: 0px;
+    overflow: hidden;
 }
 
 #codeEditorTextInput {
     width: 100%;
-    height: 100%;
-    letter-spacing: 0.1rem;
+    flex-grow: 1;
+    letter-spacing: 1px;
     color: #4b4b4b;
     white-space: nowrap;
+    resize: none;
+    outline: none;
+    border: none;
 }
 
-#codeEditor > .menu > .subMenu {
-    height: 100%;
-    padding: 0.3rem 0;
+.lineInfo {
+    width: 100%;
+    height: 1.5rem;
+    border-top: 1px dotted #ccc;
 }
 
-#codeEditor > .menu > .subMenu > button {
-    padding: 0 1rem;
-    height: 100%;
-    background-color: var(--bg-li-item);
-    color: #fff;
-    border-radius: 4px;
-}
-
-#codeEditor > .menu > .subMenu > button + button {
-    margin-left: 0.4rem;
-}
-
-#codeEditor > .menu > .tabMenu {
+#codeEditor > .menu > .tabMenu, .snb > .snbMenu > .snbTabMenu {
     display: flex;
 }
 
-#codeEditor > .menu > .tabMenu > .editorTab {
+.snb > .snbMenu > .snbTabMenu {
+    width: 100%;
+}
+
+#codeEditor > .menu > .optionMenu > button {
+    background-color: var(--bg-li-item);
+    color: #fff;
+    width: 50px;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.2rem;
+}
+
+#codeEditor > .menu > .optionMenu > button:disabled {
+    background-color: #bbb;
+    cursor: auto;
+}
+
+#codeEditor > .menu > .tabMenu > .editorTab, .snb > .snbMenu > .snbTabMenu > .snbTab {
     background-color: rgba(255,255,255,0.2);
     width: fit-content;
     height: 34px;
@@ -75,6 +105,10 @@
     overflow: hidden;
     font-size: 0.8rem;
 }
+.snb > .snbMenu > .snbTabMenu > .snbTab {
+    width: 100%;
+    display: flex;
+}
 #codeEditor > .menu > .tabMenu > .editorTab > button.editorTabItem {
     width: 100px;
     padding: 0.4rem 1rem;
@@ -82,8 +116,18 @@
     color: #fff;
     border: none;
 }
+.snb > .snbMenu > .snbTabMenu > .snbTab > button.snbTabItem {
+    flex-grow: 1;
+    padding: 0.4rem 1rem;
+    height: 100%;
+    color: #fff;
+    border: none;
+}
+.snb > .snbMenu > .snbTabMenu > .snbTab > button.snbTabItem + button.snbTabItem {
+    border-left: 1px solid #fff;
+}
 
-#codeEditor > .menu > .tabMenu > .editorTab > button.editorTabItem.active {
+#codeEditor > .menu > .tabMenu > .editorTab > button.editorTabItem.active, .snb > .snbMenu > .snbTabMenu > .snbTab > button.snbTabItem.active {
     background-color: rgba(255,255,255,1);
     font-weight: 600;
     color: #4b4b4b;
@@ -103,4 +147,253 @@
 
 #codeEditor > .menu > .tabMenu > .optionMenu > button + button {
     margin-left: 0.4rem;    
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modalContent {
+    width: 900px;
+    height: 500px;
+    color: #4b4b4b;
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 4px;
+    padding: 0.6rem;
+}
+
+.modalHeader {
+    width: 100%;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dotted #ccc;
+    padding: 0.6rem 0;
+}
+
+.modalHeader > .modalMenu > button {
+    border: 1px solid var(--bg-li-item);
+    padding: 4px 0.6rem;
+    border-radius: 4px;
+    color: var(--bg-li-item);
+    font-size: 0.8rem;
+}
+
+.modalHeader > .modalMenu > button {
+    height: 30px;
+    background-color: var(--bg-li-item);
+    color: #fff;
+}
+
+.modalHeader > .modalMenu > input[type="text"] {
+    border: 1px solid var(--bg-li-item);
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+    height: 30px;
+    margin-left: 0.4rem;
+}
+.modalHeader > .modalMenu > button.url {
+    border-radius: 0 4px 4px 0;
+}
+
+.modalHeader > .modalSubmit > .close > img {
+    background-color: var(--bg-li-item);
+    width: auto;
+    height: 28px;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.modalHeader > .modalSubmit > .copy > img {
+    background-color: var(--bg-li-item);
+    width: auto;
+    height: 28px;
+    padding: 3px;
+    border-radius: 4px;
+    margin-right: 0.4rem;
+}
+
+.modalBody {
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    padding: 0.6rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loadResult {
+    width: 100%;
+    height: 420px;
+    overflow: auto;
+    font-size: 0.8rem;
+}
+
+.loadResult .noData {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.snbSubmit {
+    width: 100%;
+    height: 64px;
+    background-color: #fff;
+    color: var(--bg-li-item);
+    background-color: var(--bg-li-item);
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 0 0 4px 4px;
+    border: 1px solid #fff;
+}
+
+.snbSubmit:disabled {
+    background-color: #bbb;
+    cursor: auto;
+}
+
+.snbContent > div {
+    width: 100%;
+}
+
+.snbApi, .snbLang {
+    cursor: pointer;
+}
+
+.apiCheck {
+    position: absolute;
+    right: 10px;
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+}
+
+.apiItem.active, .langItem.active {
+    color: #fff;
+    background-color: var(--bg-li-item);
+}
+
+.snbLang {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.snbLang > .langTitle {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+.snbLang > .preset {
+    width: 100%;
+    height: calc(100% - 60px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.snbTarget {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.targenFindBtn {
+    width: 100%;
+    height: 50px;
+    background-color: var(--bg-li-item);
+    border-radius: 4px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.targenFindBtn img {
+    margin-bottom: -4px;
+    margin-right: 2px;
+}
+
+.snbTarget > .targetList {
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.snbTarget > .targetList > .title {
+    width: 100%;
+    padding: 0.6rem;
+    border-bottom: 1px solid #efefef;
+    background-color: #f0f0f0;
+}
+
+.snbTarget > .targetList > .list {
+    width: 100%;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:  repeat(auto-fill, 50px);;
+    gap: 0.4rem;
+    padding: 0.4rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.snbTarget > .targetList > .list > .listItem {
+    padding: 0 0.6rem;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #efefef;
+    box-sizing: border-box;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+.listItemText {
+    border-bottom: 1px dotted #ddd;
+    padding-bottom: 0.2rem;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.7rem;
+}
+.listItemLine {
+    font-size: 0.7rem;
+    width: 100%;
+}
+
+.listCheck {
+    position: absolute;
+    right: -6px;
+    width: 50px;
+    height: 50px;
+    opacity: 1;   
 }

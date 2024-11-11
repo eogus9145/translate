@@ -32,6 +32,7 @@ const Modal = ({ type, idx, onClose }) => {
             dispatch({type:'setApiList', payload: list});
             onClose();
         }
+        
     }
 
     const updateApi = async () => {

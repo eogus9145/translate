@@ -12,6 +12,68 @@ import codeSvg from '../svg/content/code.svg';
 import fileSvg from '../svg/content/file.svg';
 import urlSvg from '../svg/content/url.svg';
 import closeSvg from '../svg/content/close.svg';
+import copySvg from '../svg/content/copy.svg';
+
+const LoadModal = () => {
+    const { state, dispatch } = useStateValue();
+
+    const [htmlCode, setHtmlCode] = useState();
+    const [url, setUrl] = useState("");
+
+    const modalClose = () => {
+        dispatch({type:"setIsCodeLoad", payload: false});
+    }
+
+    const handleSelect = async (type) => {
+        const result = type == 'html' ? await window.electron.openHtml() : await window.electron.openUrl(url);
+        const { cd, msg, html } = result;
+        cd == '0000' ? setHtmlCode(html) : window.alertMsg(dispatch, msg);
+    };
+
+    const htmlCopy = async () => {
+        if(htmlCode) {
+            try {
+                await navigator.clipboard.writeText(htmlCode);
+                window.alertMsg(dispatch, 'HTML이 복사되었습니다.');
+            } catch(err) {
+                window.alertMsg(dispatch, 'HTML 복사에 실패하였습니다.');
+            }
+        } else {
+            window.alertMsg(dispatch, '복사할 내용이 없습니다.');
+        }
+    }
+
+    return(
+        <div className='modal'>
+            <div className='modalContent'>
+                <div className='modalHeader'>
+                    <div className='modalMenu'>
+                        <button className='html' onClick={() => {handleSelect('html')}}>HTML 파일 불러오기</button>
+                        <input type="text" value={url} onChange={(e) => {setUrl(e.target.value)}} placeholder='URL을 입력해 주세요.'></input>
+                        <button className='url' onClick={() => {handleSelect('url')}}>URL 불러오기</button>
+                    </div>
+                    <div className='modalSubmit'>
+                        <button className='copy' onClick={() => {htmlCopy()}}>
+                            <img src={copySvg} style={{marginBottom: "-4px"}} />
+                        </button>
+                        <button className='close' onClick={() => {modalClose()}}>
+                            <img src={closeSvg} style={{marginBottom: "-4px"}} />
+                        </button>
+                    </div>
+                </div>
+                <div className='modalBody'>
+                    <div className='loadResult scrollElement dark'>
+                        {htmlCode ? 
+                            <pre>{htmlCode}</pre>
+                            :
+                            <div className='noData'>HTML파일 또는 URL을 불러와 주세요</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 const Html = () => {
 
@@ -59,7 +121,7 @@ const Html = () => {
     }
 
     const openCode = async () => {
-        let content = {}
+        let content = ""
         openNewTab('code', content);
     }
 
@@ -79,11 +141,8 @@ const Html = () => {
             content : content,
             isSave : false,
             transTarget : [],
-            api : 0,
-            lang : {
-              from : "",
-              to : []
-            },
+            api : "0",
+            preset : "0",
             result : "",
         }
         arr.push(openItem);
@@ -135,6 +194,7 @@ const Html = () => {
             </div>
 
             <div id="htmlContent">
+                {state.isCodeLoad && <LoadModal/>}
                 <div id="htmlTab">
                     {state.openList.map((item, index) => (
                         <div key={index}
@@ -143,10 +203,7 @@ const Html = () => {
                             draggable={true}
                         >
                             <span className='icon'>
-                            {item.type == 'start' && <img src={logoSvg}/>}
-                            {item.type == 'code' && <img src={codeSvg}/>}
-                            {item.type == 'html' && <img src={fileSvg}/>}
-                            {item.type == 'url' && <img src={urlSvg}/>}
+                            {item.type == 'start' ? <img src={logoSvg}/> : <img src={fileSvg}/>}
                             </span>
                             <span className='name'>
                                 {item.name}

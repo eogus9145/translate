@@ -216,9 +216,34 @@ ipcMain.handle('openHtml', async (event) => {
             filters: [ { name: 'HTML Files', extensions: ['html'] } ]
         });
 
-        let fileContent = fs.readFileSync(result.filePaths[0], 'utf-8');
+        if(result.canceled) {
+            return {cd: '0000', msg: '파일선택 도중 취소함', html : null};
+        } else {
+            let fileContent = fs.readFileSync(result.filePaths[0], 'utf-8');
+            return {cd: '0000', msg: '', html : fileContent};
+        }
+    } catch(err) {
+        console.error("html파일 여는 중 에러발생 : ", err);
+        return {cd: '9999', msg: '파일을 불러오는 중 에러발생', html : null};
+    }
+});
 
-        const $ = cheerio.load(fileContent);
+// url 열기
+ipcMain.handle('openUrl', async (event, url) => {
+    try{
+        const response = await fetch(url);
+        const html = await response.text();
+        return {cd: '0000', msg: '', html : html};
+    } catch(err) {
+        return {cd: '9999', msg: '입력하신 URL을 불러오지 못했습니다.', html : null};
+    }
+});
+
+// html에서 번역 가능한 텍스트 찾기
+ipcMain.handle('targetFind', async (event, html) => {
+    try{
+
+        const $ = cheerio.load(html);
 
         let allText = [];
 
@@ -226,23 +251,19 @@ ipcMain.handle('openHtml', async (event) => {
             if (this.type === 'text') {
                 if($(this).text().trim().length > 0) {
                     allText.push($(this).text().trim());
+                    /*
                     const wrappedText = `%%${$(this).text().trim()}%%`;
                     $(this).replaceWith(wrappedText);
+                    */
                 }
             }
         });
 
 
-        if (!result.canceled) return {html : $.html(), textNodes : allText};
-
+        return {cd: '0000', msg: '', list : texts};
     } catch(err) {
-        console.error("html파일 여는 중 에러발생 : ", err);
+        return {cd: '9999', msg: '번역가능한 대상을 찾지 못했습니다.', list : []};
     }
-});
-
-// url 열기
-ipcMain.handle('openUrl', async (event, url) => {
-
 });
 
 app.whenReady().then(() => {

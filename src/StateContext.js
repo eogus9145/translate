@@ -54,6 +54,7 @@ const initialState = {
   isSelectComplete : false,
   isAlertMsg: false,
   isConfirmMsg: false,
+  isCodeLoad: false,
 
   //함수
   alertCallback : null,
@@ -113,6 +114,7 @@ const stateReducer = (state, action) => {
     case 'setIsSelectComplete' : return { ...state, isSelectComplete: action.payload };
     case 'setIsAlertMsg' : return { ...state, isAlertMsg: action.payload };
     case 'setIsConfirmMsg' : return { ...state, isConfirmMsg: action.payload };
+    case 'setIsCodeLoad' : return { ...state, isCodeLoad: action.payload };
     
     //함수
     case 'setAlertCallback' : return { ...state, alertCallback: action.payload };

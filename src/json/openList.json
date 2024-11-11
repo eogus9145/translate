@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "idx": 0,
+    "type": "code",
+    "name": "새 작업(코드)",
+    "content": "",
+    "isSave": false,
+    "transTarget": [],
+    "api": "0",
+    "preset": "0",
+    "result": ""
+  }
+]
