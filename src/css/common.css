@@ -129,6 +129,7 @@ div[contenteditable] {
     align-items: center;
     border-bottom: 1px dotted #dedede;
     color: #4b4b4b;
+    text-align: center;
 }
 .alert > .alertContent > .submit {
     width: 100%;

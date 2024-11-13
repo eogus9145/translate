@@ -1,0 +1,53 @@
+#guideContainer {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+}
+
+#guideContainer > .content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#guideContainer > .content > .item {
+    background-color: #fff;
+    height: 100%;
+    flex-grow: 1;
+    color: #7b7b7b;
+}
+
+#guideContainer > .content > .item:hover {
+    color: #4b4b4b;
+}
+
+#guideContainer > .content > .item + .item {
+    border-left: 1px dotted #dedede;
+}
+
+#guideContainer > .content > .item.setting {
+
+}
+
+#guideContainer > .content > .item.transHtml {
+
+}
+
+#guideContainer > .content > .item.transNow {
+
+}
+
+#guideContainer > .content > .item > .title {
+    padding: 0.6rem;
+    text-align: start;
+    border-bottom: 1px dotted #dedede;
+    font-weight: 600;
+}
+
+#guideContainer > .content > .item > .text {
+    padding: 0.6rem;
+}

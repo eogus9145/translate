@@ -1,4 +1,5 @@
 import React from 'react';
+import { StateProvider, useStateValue, dateFormat } from '../StateContext.js';
 
 import '../css/titlebar.css';
 import minImg from '../svg/titlebar/minimize.svg';
@@ -9,6 +10,8 @@ import logoImg from '../svg/titlebar/logo.svg';
 
 const Titlebar = () => {
 
+  const { state, dispatch } = useStateValue();
+
   const minimize = () => {
     window.electron.minimize();
   }
@@ -18,8 +21,31 @@ const Titlebar = () => {
     window.electron.sendMaximizedStateRequest();
   }
 
-  const winClose = () => {
-    window.electron.close();
+  const winClose = async () => {
+    let isNoSaveIsExist = state.openList.some(v => v.isSave == false);
+    if(isNoSaveIsExist) {
+      window.confirmMsg(dispatch, "저장되지 않은 내용은 사라집니다.<br>프로그램을 종료하시겠습니까?", async () => {
+        let newList = [...state.openList];
+        newList = newList.filter(v => v.isSave == true);
+        let writeParam = {
+          type : "openList",
+          content : newList
+        }
+        await window.electron.writeData(writeParam);
+
+        let newProp = {...state.properties};
+        let vaildArr = newList.map(v => v.idx);
+        newProp.lastOpenIdx = newProp.lastOpenIdx.filter(v => vaildArr.includes(v));
+        let writeParam2 = {
+          type : "properties",
+          content : newProp
+        }
+        await window.electron.writeData(writeParam2);
+        window.electron.close();
+      });
+    } else {
+      window.electron.close();
+    }
   }
 
   window.addEventListener('resize', () => {

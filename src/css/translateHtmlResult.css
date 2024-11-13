@@ -1,0 +1,68 @@
+#translateHtmlResultMain {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    color: #4b4b4b;
+}
+
+.resultContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.resultHeader {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px dotted #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem;
+}
+
+.resultHeader > .title > span {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.resultHeader > .title > span.workName {
+    color: var(--bg-li-item);
+}
+
+.resultHeader > .buttonDiv > button {
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    background-color: var(--bg-li-item);
+    color: #fff;
+}
+
+.resultHeader > .buttonDiv > button + button {
+    margin-left: 0.4rem;
+}
+
+.resultBody {
+    width: 100%;
+    flex-grow: 1;
+}
+
+.resultTextarea {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    outline: none;
+    border: none;
+    padding: 0.6rem;
+    resize: none;
+}
+
+.noData {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

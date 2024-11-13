@@ -74,7 +74,7 @@ ipcMain.handle('writeData',  async (event, obj) => {
         let content = obj.content;
         let jsonStr = JSON.stringify(content, null, 2);
         fs.writeFileSync(filePath, jsonStr);
-        return { cd: '0000', msg : '저장 되었습니다' };
+        return { cd: '0000', msg : '저장 되었습니다', data : content };
     } catch(err) {
         console.log(type + '.json : failed to load');
         return { cd: '9999', msg : '저장에 실패하였습니다' };
@@ -246,25 +246,160 @@ ipcMain.handle('targetFind', async (event, html) => {
         const $ = cheerio.load(html);
 
         let allText = [];
-
+        let lines = html.split('\n');
+        let idx = 0;
         $('*:not(style):not(script)').contents().each(function() {
             if (this.type === 'text') {
-                if($(this).text().trim().length > 0) {
-                    allText.push($(this).text().trim());
-                    /*
-                    const wrappedText = `%%${$(this).text().trim()}%%`;
-                    $(this).replaceWith(wrappedText);
-                    */
+                const text = $(this).text().trim();
+                
+                if (text.length > 0) {
+                    // 텍스트가 포함된 줄 및 열 위치 찾기
+                    let found = false;
+                    for (let lineNumber = 0; lineNumber < lines.length; lineNumber++) {
+                        let columnIndex = lines[lineNumber].indexOf(text);
+                        
+                        if (columnIndex !== -1) {
+                            allText.push({
+                                idx: idx++,
+                                text,
+                                line: lineNumber + 1,
+                                column: columnIndex + 1
+                            });
+                            found = true;
+                            break;
+                        }
+                    }
+                    
+                    // 찾지 못한 경우(예: 개행된 텍스트 등) 추가 조작 필요
+                    if (!found) {
+                        console.log(`텍스트 "${text}"의 위치를 찾을 수 없습니다.`);
+                    }
                 }
             }
         });
 
-
-        return {cd: '0000', msg: '', list : texts};
+        return {cd: '0000', msg: '', list : allText};
     } catch(err) {
+        console.error(err);
         return {cd: '9999', msg: '번역가능한 대상을 찾지 못했습니다.', list : []};
     }
 });
+
+// html 번역
+ipcMain.handle('translateHtml', async (event, item) => {
+    try{
+    
+        win.webContents.send("translateProgress", {percent : 0, msg : 'HTML코드를 분석중입니다'});
+
+        // 코드 원문
+        let html = item.content;
+        
+        // 번역대상
+        let targetList = item.transTarget;
+        let targetIdxList = targetList.map(v => v.idx);
+
+        //api 정보 얻기
+        let apiIdx = item.api;
+        let apiJson = fs.readFileSync(path.join(__dirname, 'src', 'json', 'api.json'), 'utf-8');
+        let apiObj = JSON.parse(apiJson);
+        apiObj = apiObj.find(v => v.idx == apiIdx);
+
+        //언어 프리셋 정보 얻기
+        let presetIdx = item.preset;
+        let presetJson = fs.readFileSync(path.join(__dirname, 'src', 'json', 'preset.json'), 'utf-8');
+        let presetObj = JSON.parse(presetJson);
+        presetObj = presetObj.find(v => v.idx == presetIdx);
+
+        // 코드 파싱
+        const $ = cheerio.load(html);
+        
+        let allText = [];
+        let textIdx = 0;
+        let tagIdx = 0;
+        let langPack = {};
+        let defaultLang = {}
+        
+        //기준언어 추출 및 번역대상에 태그 입히기
+        $('*:not(style):not(script)').contents().each(function() {
+            if (this.type === 'text') {
+                if($(this).text().trim().length > 0) {
+                    allText.push($(this).text().trim());
+                    if(targetIdxList.includes(textIdx)) {
+                        let wrappedText = "";
+                        if($(this).closest('title').length > 0) {
+                           let title = $(this).closest('title');
+                           title.attr("data-idx", tagIdx);
+                        } else {
+                            wrappedText = `<TransTag data-idx=${tagIdx}>${$(this).text().trim()}</TransTag>`;
+                            $(this).replaceWith(wrappedText);
+                        }
+                        defaultLang[tagIdx] = $(this).text().trim();
+                        tagIdx++;
+                    }
+                    textIdx++;
+                }
+            }
+        });
+        langPack[presetObj.from.code] = defaultLang;
+
+        //기준언어를 바탕으로 번역작업
+        let percentPeriod = 100 / (presetObj.to.length + 2);
+        let percent = 0;
+        if(apiIdx == 0) {
+            for(let i=0; i<presetObj.to.length; i++) {
+                let code = presetObj.to[i].code;
+                let countryName = presetObj.to[i].ko;
+                percent = percent + percentPeriod;
+                win.webContents.send("translateProgress", {percent : percent, msg : countryName + '로 번역 중입니다'});
+                let langItem = {};
+                let arr = Object.entries(defaultLang);
+                for(let j=0; j<arr.length; j++) {
+                    let tagName = arr[j][0];
+                    let defaultValue = arr[j][1];
+                    let response = await fetch(`https://translate.google.com/m?sl=${presetObj.from.code}&tl=${code}&q=${encodeURIComponent(defaultValue)}`);
+                    let fetchHtml = await response.text();
+                    let $2 = cheerio.load(fetchHtml);
+                    let transText = $2(".result-container").text();
+                    langItem[tagName] = transText;
+                }
+                langPack[code] = langItem;
+            }
+        } else {
+            return {cd: '1000', msg: `<${apiObj.name}>는(은) 아직 준비중입니다.`, data : null};
+        }
+        
+        $('body').append(getResultScript(JSON.stringify(langPack, null, 2)));
+        win.webContents.send("translateProgress", {percent : 100, msg : '번역이 완료되었습니다'});
+        return {cd: '0000', msg: '', data : $.html()};
+        //return {cd: '0000', msg: '', data : JSON.stringify(langPack, null, 2)};
+    } catch(err) {
+        console.error("html번역 에러 : ", err);
+        return {cd: '9999', msg: 'html번역 도중 에러가 발생하였습니다 .', data : null};
+    }
+});
+
+const getResultScript = (langPackStr) => {
+    
+    return `
+    <script>
+    const langPack = ${langPackStr};
+    const fetchLang = async (country = 'ko', callback) => {
+        let title = document.querySelector("title");
+        if(title.getAttribute("data-idx")) {
+            let titleId = title.getAttribute("data-idx");
+            title.textContent = langPack[country][titleId];
+        }
+        let all = document.querySelectorAll("TransTag");
+        all.forEach((v,i) => {
+            let id = v.getAttribute("data-idx");
+            let value = langPack[country][id];
+            v.innerHTML = value;
+        });
+        if(callback) callback();
+    }
+    </script>
+    `;
+}
 
 app.whenReady().then(() => {
     createWindow();

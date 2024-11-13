@@ -9,7 +9,7 @@ const initialState = {
   targetSnb : '',
   descText : '',
   addProjectName : '',
-  currentMain : 'html',
+  currentMain : 'translate',
   currentMenu : '',
   currentTransFrom : 'ko',
   currentTransFromText : '한국어',
@@ -23,6 +23,8 @@ const initialState = {
   settingModalApiKey : '',
   alertMsg : '',
   confirmMsg : '',
+  loadingPercent : '',
+  loadingMsg : '',
 
   
   // 배열 state
@@ -55,6 +57,8 @@ const initialState = {
   isAlertMsg: false,
   isConfirmMsg: false,
   isCodeLoad: false,
+  isCodeSave: false,
+  isLoading: false,
 
   //함수
   alertCallback : null,
@@ -89,6 +93,8 @@ const stateReducer = (state, action) => {
     case 'setSettingModalApiKey' : return { ...state, settingModalApiKey: action.payload };
     case 'setAlertMsg' : return { ...state, alertMsg: action.payload };
     case 'setConfirmMsg' : return { ...state, confirmMsg: action.payload };
+    case 'setLoadingPercent' : return { ...state, loadingPercent: action.payload };
+    case 'setLoadingMsg' : return { ...state, loadingMsg: action.payload };
 
     //배열
     case 'setSortOption' : return { ...state, sortOption: action.payload };
@@ -115,6 +121,8 @@ const stateReducer = (state, action) => {
     case 'setIsAlertMsg' : return { ...state, isAlertMsg: action.payload };
     case 'setIsConfirmMsg' : return { ...state, isConfirmMsg: action.payload };
     case 'setIsCodeLoad' : return { ...state, isCodeLoad: action.payload };
+    case 'setIsCodeSave' : return { ...state, isCodeSave: action.payload };
+    case 'setIsLoading' : return { ...state, isLoading: action.payload };
     
     //함수
     case 'setAlertCallback' : return { ...state, alertCallback: action.payload };

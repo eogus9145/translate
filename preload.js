@@ -25,6 +25,10 @@ contextBridge.exposeInMainWorld('electron', {
 
     targetFind: (html) => ipcRenderer.invoke('targetFind', html),
 
+    translateHtml: (obj) => ipcRenderer.invoke('translateHtml', obj),
+
+    translateProgress : (obj) => ipcRenderer.on('translateProgress', obj),
+
     //개발 단계에서만...
     toggleDevTools: () => ipcRenderer.send('toggle-dev-tools'),
 });

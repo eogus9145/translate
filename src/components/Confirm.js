@@ -10,9 +10,7 @@ const Confirm = () => {
     return(
         <div className="alert">
             <div className='alertContent'>
-                <div className='msg'>
-                    {state.confirmMsg}
-                </div>
+                <div className='msg' dangerouslySetInnerHTML={{ __html: state.confirmMsg }}></div>
                 <div className='submit'>
                     <button className='submitBtn' onClick={async () => {
                         dispatch({type:'setConfirmMsg', payload:''});

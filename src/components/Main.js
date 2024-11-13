@@ -1,6 +1,8 @@
 import Reactm, { useState, useEffect } from 'react';
 import { StateProvider, useStateValue } from '../StateContext.js';
 
+import Loading from './Loading.js';
+
 import '../css/main.css';
 
 import Html from './Html.js';
@@ -18,13 +20,13 @@ const Main = () => {
     return(
         <div id="main">
             <div className='mainContent'>
-                { state.currentMain == 'html' && <Html/>}
                 { state.currentMain == 'translate' && <Translate/>}
+                { state.currentMain == 'html' && <Html/>}
                 { state.currentMain == 'setting' && <Setting/>}
-                { state.currentMain == 'guide' && <Guide/>}
-
+                {/* { state.currentMain == 'guide' && <Guide/>} */}
                 { state.isAlertMsg && <Alert/> }
                 { state.isConfirmMsg && <Confirm/> }
+                {state.isLoading && <Loading />}
             </div>
         </div>
     );

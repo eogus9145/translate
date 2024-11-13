@@ -2,12 +2,44 @@
   {
     "idx": 0,
     "type": "code",
-    "name": "새 작업(코드)",
-    "content": "",
-    "isSave": false,
+    "name": "먹고마시고사랑하라",
+    "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Document</title>\n</head>\n<body>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n</body>\n</html>",
+    "isSave": true,
+    "saveDate": "2024-11-13T08:29:11.305Z",
+    "transTarget": [
+      {
+        "idx": 0,
+        "text": "Document",
+        "line": 6,
+        "column": 12
+      }
+    ],
+    "api": "0",
+    "preset": "0",
+    "result": "<!DOCTYPE html><html lang=\"en\"><head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title data-idx=\"0\">Document</title>\n</head>\n<body>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n\n\n    <script>\n    const langPack = {\n  \"ko\": {\n    \"0\": \"Document\"\n  },\n  \"af\": {\n    \"0\": \"Dokument\"\n  },\n  \"sq\": {\n    \"0\": \"Dokumenti\"\n  },\n  \"am\": {\n    \"0\": \"ሰነድ\"\n  }\n};\n    const fetchLang = async (country = 'ko', callback) => {\n        let title = document.querySelector(\"title\");\n        if(title.getAttribute(\"data-idx\")) {\n            let titleId = title.getAttribute(\"data-idx\");\n            title.textContent = langPack[country][titleId];\n        }\n        let all = document.querySelectorAll(\"TransTag\");\n        all.forEach((v,i) => {\n            let id = v.getAttribute(\"data-idx\");\n            let value = langPack[country][id];\n            v.innerHTML = value;\n        });\n        if(callback) callback();\n    }\n    </script>\n    </body></html>",
+    "selection": {
+      "start": 202,
+      "end": 202,
+      "selectedText": ""
+    },
+    "isShow": false
+  },
+  {
+    "idx": 1,
+    "type": "code",
+    "name": "a",
+    "content": "a",
+    "isSave": true,
+    "saveDate": "2024-11-13T07:01:59.058Z",
     "transTarget": [],
     "api": "0",
     "preset": "0",
-    "result": ""
+    "result": "",
+    "selection": {
+      "start": 1,
+      "end": 1,
+      "selectedText": ""
+    },
+    "isShow": false
   }
 ]
