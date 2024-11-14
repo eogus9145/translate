@@ -5,7 +5,7 @@ import '../css/removeValue.css';
 
 import closeImg from '../svg/titlebar/close.svg';
 
-const RemoveValue = ({ iconSize, position, targetId, dispatchType }) => {
+const RemoveValue = ({ iconSize, position, targetId, dispatchType, callback, targetFind, setState }) => {
 
     const { state, dispatch } = useStateValue();
 
@@ -13,9 +13,11 @@ const RemoveValue = ({ iconSize, position, targetId, dispatchType }) => {
     const [left, setLeft] = useState(0);
     const [size, setSize] = useState(iconSize == 'sm' ? 10 : (iconSize == 'md' ? 20 : (iconSize == 'lg' ? '30' : '20')));
 
-    const handleRemove = (targetId, dispatchType) => {
+    const handleRemove = () => {
         if(dispatchType) {
             dispatch({type:dispatchType, payload: ''});
+        } else if(callback) {
+            callback();
         } else {
             document.querySelector("#" + targetId).value = "";
         }
@@ -57,7 +59,7 @@ const RemoveValue = ({ iconSize, position, targetId, dispatchType }) => {
                     backgroundSize: size + "px, " + size + "px",
                 }
             }
-            onClick={() => {handleRemove(targetId, dispatchType ? dispatchType : null)}}
+            onClick={() => {handleRemove()}}
         >
         </div>
     );

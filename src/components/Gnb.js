@@ -60,9 +60,9 @@ const Gnb = () => {
             <li className={state.currentMain == 'setting' ? 'menuLi active' : 'menuLi'} data-main_id="setting" onClick={(e) => gnbClick(e.target)}>
                 <img src={settingSvg} alt="설정" className="menuIcon" onMouseEnter={(e) => mouseenter(e.target)} onMouseLeave={(e) => mouseleave(e.target)}/>
             </li>
-            {/* <li className={state.currentMain == 'guide' ? 'menuLi active' : 'menuLi'} data-main_id="guide" onClick={(e) => gnbClick(e.target)}>
+            <li className={state.currentMain == 'guide' ? 'menuLi active' : 'menuLi'} data-main_id="guide" onClick={(e) => gnbClick(e.target)}>
                 <img src={guideSvg} alt="사용자 가이드" className="menuIcon" onMouseEnter={(e) => mouseenter(e.target)} onMouseLeave={(e) => mouseleave(e.target)}/>
-            </li> */}
+            </li>
             <div id="menuDesc" className={state.isDescView ? '' : 'hidden'} style={{height: '28px', top:state.descTop, left: '60px'}}>
                 <span id="menuDescText">{state.descText}</span>
                 <div id="menuDescTailBorder">

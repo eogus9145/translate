@@ -254,7 +254,7 @@ const Modal = ({ type, idx, onClose }) => {
                                     </td>
                                 </tr>
                                 <tr className={type == 'preset' ? '' : 'hidden'}>
-                                    <th>번역 대상</th>
+                                    <th>번역 언어</th>
                                     <td className='langList'>
                                         <div className='settingModalLangControl'>
                                             <div>
@@ -361,11 +361,6 @@ const Setting = () => {
                                         }}>
                                             <img src={editSvg}/>
                                         </button>
-                                        <button className={item.idx > 0 ? 'btn' : 'btn disabled'} onClick={() => {
-                                            if(item.idx > 0) handleDelete('api', item.idx);
-                                        }}>
-                                            <img src={delSvg}/>
-                                        </button>
                                     </div>
                                 </div>
                                 <div className='content'>
@@ -393,7 +388,7 @@ const Setting = () => {
 
                 <div className='settingItem'>
                     <div className='title'>
-                        <span>번역 대상 언어 프리셋</span>
+                        <span>언어 프리셋</span>
                         <div>
                             <button className='addBtn' onClick={()=>addPreset()}>추가</button>
                         </div>
@@ -423,7 +418,7 @@ const Setting = () => {
                                     </div>
 
                                     <div className='apiKey multiple'>
-                                        <span className='apiKeySpan'>번역 대상</span>
+                                        <span className='apiKeySpan'>번역 언어</span>
                                         <div className='apiKeyInput'>
                                             <div className='langList scrollElement dark'>
                                             {item.to.map((item2, index2) => (

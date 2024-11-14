@@ -29,6 +29,8 @@ contextBridge.exposeInMainWorld('electron', {
 
     translateProgress : (obj) => ipcRenderer.on('translateProgress', obj),
 
+    saveToHtml : (obj) => ipcRenderer.invoke('saveToHtml', obj),
+
     //개발 단계에서만...
     toggleDevTools: () => ipcRenderer.send('toggle-dev-tools'),
 });

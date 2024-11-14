@@ -242,41 +242,40 @@ ipcMain.handle('openUrl', async (event, url) => {
 // html에서 번역 가능한 텍스트 찾기
 ipcMain.handle('targetFind', async (event, html) => {
     try{
-
         const $ = cheerio.load(html);
 
         let allText = [];
-        let lines = html.split('\n');
         let idx = 0;
         $('*:not(style):not(script)').contents().each(function() {
             if (this.type === 'text') {
                 const text = $(this).text().trim();
                 
                 if (text.length > 0) {
-                    // 텍스트가 포함된 줄 및 열 위치 찾기
-                    let found = false;
-                    for (let lineNumber = 0; lineNumber < lines.length; lineNumber++) {
-                        let columnIndex = lines[lineNumber].indexOf(text);
-                        
-                        if (columnIndex !== -1) {
-                            allText.push({
-                                idx: idx++,
-                                text,
-                                line: lineNumber + 1,
-                                column: columnIndex + 1
-                            });
-                            found = true;
-                            break;
-                        }
-                    }
-                    
-                    // 찾지 못한 경우(예: 개행된 텍스트 등) 추가 조작 필요
-                    if (!found) {
-                        console.log(`텍스트 "${text}"의 위치를 찾을 수 없습니다.`);
-                    }
+                    let obj = {};
+                    obj.idx = idx++;
+                    obj.text = text;    
+                    let wrappedText = '{%' + text + '%}';
+                    $(this).replaceWith(wrappedText);
+
+                    //cheerio에서 래핑하는게 아니라 html에서 래핑해야됨....
+
+                    allText.push(obj);
+
                 }
             }
         });
+
+        let fixedHtml = $.html();
+        fixedHtml = fixedHtml.replace(/(<html[^>]*>)/g, '\n$1\n');
+        let foundLines = [];
+        for(let i=0; i<allText.length; i++) {
+            let placeholder = '{%' + allText[i].text + '%}'
+            let result = findPosition(fixedHtml, placeholder, foundLines);
+            foundLines = result.foundLines;
+            let position = result.position;
+            allText[i].line = position.line;
+            allText[i].column = position.column;
+        }
 
         return {cd: '0000', msg: '', list : allText};
     } catch(err) {
@@ -284,6 +283,27 @@ ipcMain.handle('targetFind', async (event, html) => {
         return {cd: '9999', msg: '번역가능한 대상을 찾지 못했습니다.', list : []};
     }
 });
+
+const findPosition = (html, targetText, foundLines) => {
+    let lines = html.split('\n');
+    let position = {};
+    for(let i=0; i<lines.length; i++) {
+        if(foundLines.includes(i)) {
+            
+        } else {
+            let column = lines[i].indexOf(targetText);
+            if(column !== -1) {
+                foundLines.push(i);
+                position.line = i + 1;
+                position.column = column + 1;
+                break;
+            }
+        }
+    }
+
+    return {foundLines, position};
+
+}
 
 // html 번역
 ipcMain.handle('translateHtml', async (event, item) => {
@@ -383,7 +403,7 @@ const getResultScript = (langPackStr) => {
     return `
     <script>
     const langPack = ${langPackStr};
-    const fetchLang = async (country = 'ko', callback) => {
+    const fetchLang = (country = 'ko', callback) => {
         let title = document.querySelector("title");
         if(title.getAttribute("data-idx")) {
             let titleId = title.getAttribute("data-idx");
@@ -400,6 +420,30 @@ const getResultScript = (langPackStr) => {
     </script>
     `;
 }
+
+// 번역결과 html파일로 저장
+ipcMain.handle('saveToHtml', async (event, obj) => {
+    let defaultName = obj.defaultName;
+    let html = obj.html;
+    try {
+        const file = await dialog.showSaveDialog(win, {
+            title: '번역결과 파일로 저장',
+            defaultPath: path.join(app.getPath('documents'), defaultName + '.html'),
+            filters: [{ name: 'HTML Files', extensions: ['html'] }],
+            modal: true
+        });
+
+        if (!file.canceled && file.filePath) {
+            fs.writeFileSync(file.filePath, html, 'utf8');
+            return {cd : '0000', msg : '파일이 저장되었습니다'};
+        } else {
+            return {cd : '1000', msg : '파일이 저장이 취소되었습니다'};
+        }
+    } catch (err) {
+        console.error(err);
+        return {cd : '9999', msg : '파일을 저장하는 중에 에러가 발생하였습니다'};
+    }
+});
 
 app.whenReady().then(() => {
     createWindow();

@@ -2,6 +2,7 @@ import Reactm, { useState, useEffect } from 'react';
 import { StateProvider, useStateValue } from '../StateContext.js';
 
 import TranslateHtmlResult from './TranslateHtmlResult.js';
+import RemoveValue from './RemoveValue.js';
 
 import '../css/codeEditor.css';
 
@@ -9,6 +10,7 @@ import saveSvg from '../svg/content/save.svg';
 import checkSvg from '../svg/content/check.svg';
 import checkWhiteSvg from '../svg/content/check_white.svg';
 import findSvg from '../svg/content/find.svg';
+import lockSvg from '../svg/content/lock.svg';
 
 const CodeEditor = () => {
     const { state, dispatch } = useStateValue();
@@ -70,7 +72,13 @@ const CodeEditor = () => {
     }
 
     const targetFind = async (html) => {
-        if(!html) return;
+        if(!html) {
+            return;
+        } else if (!html.includes("</html>")) {
+            window.alertMsg(dispatch, '정상적인 html코드가 아닙니다.');
+            setTargetList([]);
+            return;
+        }
         let {cd, msg, list} = await window.electron.targetFind(html);
         if(cd == '0000') {
             setTargetList(list);
@@ -80,11 +88,35 @@ const CodeEditor = () => {
         }
     }
 
+    const selectTextarea = (textarea, line, start, end) => {
+        const lines = textarea.value.split('\n');
+        let charIndex = 0;
+        for (let i = 0; i < line; i++) {
+          charIndex += lines[i].length + 1;
+        }
+        const selectionStart = charIndex + start;
+        const selectionEnd = charIndex + end;
+        textarea.focus();
+        textarea.setSelectionRange(selectionStart, selectionEnd);
+        const { scrollTop, scrollHeight, clientHeight } = textarea;
+        const lineHeight = 20;
+        const selectedTopPosition = line * lineHeight;
+        if (selectedTopPosition < scrollTop || selectedTopPosition > scrollTop + clientHeight) {
+            textarea.scrollTop = selectedTopPosition - clientHeight / 2;
+        }
+    }
+
     const selectTarget = async (targetIdx) => {
         let openList = [...state.openList];
         let openTarget = openList.find((v,i) => v.idx == item.idx);
         let transTargetList = [...openTarget.transTarget];
         let target = targetList[targetIdx];
+        console.log(target);
+        let line = target.line - 1;
+        let start = target.column - 1;
+        let end = start + target.text.length;
+        selectTextarea(document.querySelector("#codeEditorTextInput"), line, start, end)
+
         if(transTargetList.map(v => v.idx).includes(targetIdx)) {
             transTargetList = transTargetList.filter(v => v.idx !== targetIdx)
         } else {
@@ -226,6 +258,14 @@ const CodeEditor = () => {
                             <textarea id="codeEditorTextInput" className='scrollElement dark' spellCheck={false} value={htmlCode} onChange={(e) => {htmlCodeChange(e.target.value)}}
                                 onKeyUp={()=>{textareaInput()}} onClick={()=>{textareaInput()}} onKeyDown={(e) => {handleInput(e)}}
                             ></textarea>
+                            <RemoveValue iconSize="md" position="start" targetId="codeEditorTextInput" targetFind={targetFind} setHtmlCode={setHtmlCode} callback={()=>{
+                                let newList = [...state.openList];
+                                let target = newList.find((v,i) => v.idx == item.idx);
+                                target.content = "";
+                                dispatch({type:'setOpenList', payload:newList});
+                                targetFind('');
+                                setHtmlCode('');
+                            }}/>
                             <div className='lineInfo'>
                                 <span>줄</span>&nbsp;<span>{row}</span>,&nbsp;
                                 <span>열</span><span>{col}</span>
@@ -237,6 +277,9 @@ const CodeEditor = () => {
                     </div>
                 </div>
                 <div className='snb'>
+                    <div className={currentTab == 'result' ? 'snbBlock' : 'snbBlock hidden'}>
+                        <img src={lockSvg} />
+                    </div>
                     <div className='snbMenu'>
                         <div className='snbTabMenu'>
                             <div className='snbTab'>
@@ -251,7 +294,7 @@ const CodeEditor = () => {
                         
                             <div className={currentSnbTab == 'target' ? 'snbTarget' : 'snbTarget hidden'}>
                                 <div className='targenFindBtn'>
-                                    번역가능 텍스트 추출
+                                아래 목록에서 번역하실 텍스트를 체크해주세요
                                 </div>
                                 <div className='targetList'>
                                     <div className='title'>

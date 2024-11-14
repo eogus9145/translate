@@ -5,41 +5,131 @@
     "name": "먹고마시고사랑하라",
     "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Document</title>\n</head>\n<body>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n</body>\n</html>",
     "isSave": true,
-    "saveDate": "2024-11-13T08:29:11.305Z",
+    "saveDate": "2024-11-14T05:27:21.443Z",
     "transTarget": [
       {
         "idx": 0,
         "text": "Document",
         "line": 6,
         "column": 12
+      },
+      {
+        "idx": 1,
+        "text": "먹다",
+        "line": 9,
+        "column": 10
+      },
+      {
+        "idx": 2,
+        "text": "마시다",
+        "line": 10,
+        "column": 10
+      },
+      {
+        "idx": 3,
+        "text": "사랑하다",
+        "line": 11,
+        "column": 10
+      },
+      {
+        "idx": 4,
+        "text": "먹다",
+        "line": 12,
+        "column": 10
+      },
+      {
+        "idx": 5,
+        "text": "사랑하다",
+        "line": 13,
+        "column": 10
+      },
+      {
+        "idx": 6,
+        "text": "먹다",
+        "line": 14,
+        "column": 10
+      },
+      {
+        "idx": 7,
+        "text": "먹다",
+        "line": 15,
+        "column": 10
+      },
+      {
+        "idx": 8,
+        "text": "마시다",
+        "line": 16,
+        "column": 10
+      },
+      {
+        "idx": 9,
+        "text": "사랑하다",
+        "line": 17,
+        "column": 10
+      },
+      {
+        "idx": 10,
+        "text": "먹다",
+        "line": 18,
+        "column": 10
+      },
+      {
+        "idx": 11,
+        "text": "사랑하다",
+        "line": 19,
+        "column": 10
+      },
+      {
+        "idx": 12,
+        "text": "먹다",
+        "line": 20,
+        "column": 10
+      },
+      {
+        "idx": 13,
+        "text": "먹다",
+        "line": 21,
+        "column": 10
+      },
+      {
+        "idx": 14,
+        "text": "마시다",
+        "line": 22,
+        "column": 10
+      },
+      {
+        "idx": 30,
+        "text": "먹다",
+        "line": 38,
+        "column": 10
       }
     ],
     "api": "0",
     "preset": "0",
-    "result": "<!DOCTYPE html><html lang=\"en\"><head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title data-idx=\"0\">Document</title>\n</head>\n<body>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n\n\n    <script>\n    const langPack = {\n  \"ko\": {\n    \"0\": \"Document\"\n  },\n  \"af\": {\n    \"0\": \"Dokument\"\n  },\n  \"sq\": {\n    \"0\": \"Dokumenti\"\n  },\n  \"am\": {\n    \"0\": \"ሰነድ\"\n  }\n};\n    const fetchLang = async (country = 'ko', callback) => {\n        let title = document.querySelector(\"title\");\n        if(title.getAttribute(\"data-idx\")) {\n            let titleId = title.getAttribute(\"data-idx\");\n            title.textContent = langPack[country][titleId];\n        }\n        let all = document.querySelectorAll(\"TransTag\");\n        all.forEach((v,i) => {\n            let id = v.getAttribute(\"data-idx\");\n            let value = langPack[country][id];\n            v.innerHTML = value;\n        });\n        if(callback) callback();\n    }\n    </script>\n    </body></html>",
+    "result": "<!DOCTYPE html><html lang=\"en\"><head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title data-idx=\"0\">Document</title>\n</head>\n<body>\n    <div><transtag data-idx=\"1\">먹다</transtag></div>\n    <div><transtag data-idx=\"2\">마시다</transtag></div>\n    <div><transtag data-idx=\"3\">사랑하다</transtag></div>\n    <div><transtag data-idx=\"4\">먹다</transtag></div>\n    <div><transtag data-idx=\"5\">사랑하다</transtag></div>\n    <div><transtag data-idx=\"6\">먹다</transtag></div>\n    <div><transtag data-idx=\"7\">먹다</transtag></div>\n    <div><transtag data-idx=\"8\">마시다</transtag></div>\n    <div><transtag data-idx=\"9\">사랑하다</transtag></div>\n    <div><transtag data-idx=\"10\">먹다</transtag></div>\n    <div><transtag data-idx=\"11\">사랑하다</transtag></div>\n    <div><transtag data-idx=\"12\">먹다</transtag></div>\n    <div><transtag data-idx=\"13\">먹다</transtag></div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>먹다</div>\n    <div>마시다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n    <div>사랑하다</div>\n    <div>먹다</div>\n\n\n    <script>\n    const langPack = {\n  \"ko\": {\n    \"0\": \"Document\",\n    \"1\": \"먹다\",\n    \"2\": \"마시다\",\n    \"3\": \"사랑하다\",\n    \"4\": \"먹다\",\n    \"5\": \"사랑하다\",\n    \"6\": \"먹다\",\n    \"7\": \"먹다\",\n    \"8\": \"마시다\",\n    \"9\": \"사랑하다\",\n    \"10\": \"먹다\",\n    \"11\": \"사랑하다\",\n    \"12\": \"먹다\",\n    \"13\": \"먹다\"\n  },\n  \"af\": {\n    \"0\": \"Dokument\",\n    \"1\": \"eet\",\n    \"2\": \"drink\",\n    \"3\": \"liefde\",\n    \"4\": \"eet\",\n    \"5\": \"liefde\",\n    \"6\": \"eet\",\n    \"7\": \"eet\",\n    \"8\": \"drink\",\n    \"9\": \"liefde\",\n    \"10\": \"eet\",\n    \"11\": \"liefde\",\n    \"12\": \"eet\",\n    \"13\": \"eet\"\n  },\n  \"sq\": {\n    \"0\": \"Dokumenti\",\n    \"1\": \"hani\",\n    \"2\": \"pije\",\n    \"3\": \"dashuri\",\n    \"4\": \"hani\",\n    \"5\": \"dashuri\",\n    \"6\": \"hani\",\n    \"7\": \"hani\",\n    \"8\": \"pije\",\n    \"9\": \"dashuri\",\n    \"10\": \"hani\",\n    \"11\": \"dashuri\",\n    \"12\": \"hani\",\n    \"13\": \"hani\"\n  },\n  \"am\": {\n    \"0\": \"ሰነድ\",\n    \"1\": \"ብላ\",\n    \"2\": \"ጠጣ\",\n    \"3\": \"ፍቅር\",\n    \"4\": \"ብላ\",\n    \"5\": \"ፍቅር\",\n    \"6\": \"ብላ\",\n    \"7\": \"ብላ\",\n    \"8\": \"ጠጣ\",\n    \"9\": \"ፍቅር\",\n    \"10\": \"ብላ\",\n    \"11\": \"ፍቅር\",\n    \"12\": \"ብላ\",\n    \"13\": \"ብላ\"\n  }\n};\n    const fetchLang = async (country = 'ko', callback) => {\n        let title = document.querySelector(\"title\");\n        if(title.getAttribute(\"data-idx\")) {\n            let titleId = title.getAttribute(\"data-idx\");\n            title.textContent = langPack[country][titleId];\n        }\n        let all = document.querySelectorAll(\"TransTag\");\n        all.forEach((v,i) => {\n            let id = v.getAttribute(\"data-idx\");\n            let value = langPack[country][id];\n            v.innerHTML = value;\n        });\n        if(callback) callback();\n    }\n    </script>\n    </body></html>",
     "selection": {
       "start": 202,
       "end": 202,
       "selectedText": ""
     },
-    "isShow": false
+    "isShow": true
   },
   {
     "idx": 1,
     "type": "code",
     "name": "a",
-    "content": "a",
+    "content": "",
     "isSave": true,
-    "saveDate": "2024-11-13T07:01:59.058Z",
+    "saveDate": "2024-11-14T02:03:24.772Z",
     "transTarget": [],
     "api": "0",
     "preset": "0",
     "result": "",
     "selection": {
-      "start": 1,
-      "end": 1,
+      "start": 0,
+      "end": 0,
       "selectedText": ""
     },
-    "isShow": false
+    "isShow": true
   }
 ]

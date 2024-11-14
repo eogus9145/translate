@@ -94,7 +94,7 @@ const LoadModal = () => {
         if(htmlCode) {
             try {
                 await navigator.clipboard.writeText(htmlCode);
-                window.alertMsg(dispatch, 'HTML이 복사되었습니다.');
+                // window.alertMsg(dispatch, 'HTML이 복사되었습니다.');
             } catch(err) {
                 window.alertMsg(dispatch, 'HTML 복사에 실패하였습니다.');
             }

@@ -10,31 +10,10 @@
     },
     "to": [
       {
-        "ko": "아프리칸스어",
-        "code": "af",
-        "native": "Afrikaans"
-      },
-      {
-        "ko": "알바니아어",
-        "code": "sq",
-        "native": "shqiptare"
-      },
-      {
-        "ko": "암하라어",
-        "code": "am",
-        "native": "አማርኛ"
+        "ko": "영어",
+        "code": "en",
+        "native": "english"
       }
     ]
-  },
-  {
-    "idx": 1,
-    "name": "111",
-    "desc": "222",
-    "from": {
-      "ko": "한국어",
-      "code": "ko",
-      "native": "한국어"
-    },
-    "to": []
   }
 ]

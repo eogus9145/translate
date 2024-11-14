@@ -23,7 +23,7 @@ const Main = () => {
                 { state.currentMain == 'translate' && <Translate/>}
                 { state.currentMain == 'html' && <Html/>}
                 { state.currentMain == 'setting' && <Setting/>}
-                {/* { state.currentMain == 'guide' && <Guide/>} */}
+                { state.currentMain == 'guide' && <Guide/>}
                 { state.isAlertMsg && <Alert/> }
                 { state.isConfirmMsg && <Confirm/> }
                 {state.isLoading && <Loading />}
